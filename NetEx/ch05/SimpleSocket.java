@@ -11,10 +11,12 @@ public class SimpleSocket {
     InetSocketAddress local = 
       new InetSocketAddress(2222);
     InetSocketAddress remote = 
-      new InetSocketAddress("www.snpy.org", 23);
+      new InetSocketAddress("www.youtube.com", 23);
     socket.bind(local);
     System.out.println("由本地出發的埠號:"
         + socket.getLocalPort());
     socket.connect(remote, 5);
+    //public void connect(SocketAddress host, int timeout) throws IOException
+//This method connects the socket to the specified host. This method is needed only when you instantiated the Socket using the no-argument constructor.
   }
 }
