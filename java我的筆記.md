@@ -13,3 +13,4 @@ Slickedit的java專案，需設定jdk路徑如下:
 ![](https://user-images.githubusercontent.com/54731836/80503783-f0740a80-89a4-11ea-8485-09f8b23daf1a.png)
 
 
+test
