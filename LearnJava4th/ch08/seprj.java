@@ -1,6 +1,27 @@
 import java.util.*;
 
 
+interface A 
+{
+	static int FOO=1; 
+	String getFoo();
+}
+interface B 
+{ 
+	static int FOO=2;
+	Date getDoo();
+}
+
+class Cast2<T extends A & B>//<T extends A >//<T extends A & B>
+{
+	public void foo( T t )
+	{
+		//System.out.println( t.FOO );
+		System.out.println( A.FOO );
+		System.out.println( B.FOO );
+	}
+
+}
 
 class Variant 
 {
@@ -88,6 +109,24 @@ public class seprj
 		// Note: Eclipse 3.1 says this is an error, but it's not
 		Runnable runnable = infer( new Sub1(), new Sub2() );
 		Date d = new Variant2().get();
-		System.out.printf("d: (%s) \n", d.toString()); 
+		System.out.printf("d: (%s) \n", d.toString());
+		//
+		Weekday mon=Weekday.Monday;
+		Weekday tue = Weekday.Tuesday;
+		Weekday wed = Weekday.Wednesday;
+		Weekday thu = Weekday.Thursday;
+		Weekday fri = Weekday.Friday;
+		Weekday sat = Weekday.Saturday;
+		Weekday sun = Weekday.Sunday;
+		System.out.printf("Weekday: (%d) \n", mon.getFun());
+		System.out.printf("Weekday: (%d) \n", tue.getFun());
+		System.out.printf("Weekday: (%d) \n", wed.getFun());
+		System.out.printf("Weekday: (%d) \n", thu.getFun());
+		System.out.printf("Weekday: (%d) \n", fri.getFun());
+		System.out.printf("Weekday: (%d) \n", sat.getFun());
+		System.out.printf("Weekday: (%d) \n", sun.getFun());
+		Cast2Int c1=new Cast2();
+
+		// 
 	}
 }
