@@ -1,5 +1,61 @@
 import java.util.*;
+/*
+import com.sun.tools.sjavac.options:Option.S;
+import com.sun.tools.sjavac.options:Option.S;
+import com.sun.tools.sjavac.options:Option.S;
+import com.sun.tools.sjavac.options:Option.S;
+*/
 
+class DateList extends ArrayList<Date> { }
+
+class D {
+	public <T> T foo(T input) { /*T rettype;*/return input;}
+	<T> void take( T t ) { }
+
+	void foo() {
+
+		List l = new ArrayList();
+		List<Date> ldfo = (List<Date>)l; // unchecked warning, ineffective
+		Date d = ldfo.get(0); // unsafe at runtime
+		//Set<?> s = new HashSet();
+		//s.put("foo");
+		//s.put(new Date());
+		Collection<?> [] ca = new Collection<?> [5];
+		List<? extends Date> list = new ArrayList<Date>();
+		List<Date> dl = new DateList();
+		List y = new ArrayList(); //ok
+		y.add("foo"); // warn
+
+		//
+		List<?>[] la = new ArrayList<?>[10]; // ok
+		List<Object> lo = new ArrayList<Object>();
+		List<? extends Date> ld = new ArrayList<Date>();
+		
+		//
+	}
+
+	static <T extends Comparable> T compare( T t1, T t2 ) { return null; }
+
+	void bar() { 
+		int i = compare( 1, 2 );
+	}
+
+}
+
+	
+class ArrayHolder<T> {
+	T[] ta;
+	void take( T [] ta ) { 
+		this.ta = ta;
+	}
+}
+
+/*
+class B<?>//no {
+	//public <T> T foo() { return null; }
+}
+
+*/
 
 interface A 
 {
@@ -62,8 +118,9 @@ class Mouse { }
 
 class Bear { }
 
-public class seprj
+public class seprj<T>
 {
+	
 	enum Weekday 
 	{
 
@@ -79,7 +136,8 @@ public class seprj
 		public int getFun() { return fun; }
 
 	}
-
+	T t;//static T t;
+	static <T> T infer( T t1, T t2 ) { return null; }
 	static <T extends Base> T infer( T t1, T t2 ) { return null; }
 
 	static <T> Trap<T> create() 
@@ -125,8 +183,17 @@ public class seprj
 		System.out.printf("Weekday: (%d) \n", fri.getFun());
 		System.out.printf("Weekday: (%d) \n", sat.getFun());
 		System.out.printf("Weekday: (%d) \n", sun.getFun());
-		Cast2Int c1=new Cast2();
-
+		
+		//Cast2<?> c1 = new Cast2<>();//TODO
+		//c1.foo(c1);//TODO
 		// 
+		infer( "foo", new Date() );
+		D d1=new D();
+		Date date1 = d1.foo(new Date());
+		System.out.printf("DAte: (%s)  \n", date1.toString());
+		d1.bar();
+		//
+		List<?>[] lsa = new ArrayList[10];
+		//
 	}
 }
