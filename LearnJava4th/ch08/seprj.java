@@ -34,10 +34,16 @@ class D {
 		//
 	}
 
-	static <T extends Comparable> T compare( T t1, T t2 ) { return null; }
+	static <T extends Comparable> T compare( T t1, T t2 ) 
+	{ 
+		T rettype=t1;
+		return rettype/*null*/; 
+	}
 
-	void bar() { 
-		int i = compare( 1, 2 );
+	void bar() 
+	{
+		int i=0;
+		i = compare( 1, 2 );
 	}
 
 }
@@ -195,5 +201,6 @@ public class seprj<T>
 		//
 		List<?>[] lsa = new ArrayList[10];
 		//
+		List<Date> d2 = new ArrayList<>();//List<E extends Date> d2 = new ArrayList<E extends Date>();
 	}
 }
